@@ -76,7 +76,9 @@ class PlayProgressBar extends Component {
  * @private
  */
 PlayProgressBar.prototype.options_ = {
-  children: []
+  children: [
+    'timeTooltip'
+  ]
 };
 
 // Time tooltips should not be added to a player on mobile devices

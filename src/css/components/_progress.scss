@@ -35,7 +35,6 @@
 }
 
 .video-js .vjs-progress-control .vjs-progress-holder {
-
   // This is one of the rare cases where we are using a pixel dimension. The
   // reason is that the progress holder font-size changes on hover. With the
   // default em-based margins, this means it gets narrower and causes issues
@@ -165,7 +164,7 @@
 .video-js.vjs-user-inactive .vjs-progress-control .vjs-mouse-display {
   visibility: hidden;
   opacity: 0;
-  $trans: visibility 1.0s, opacity 1.0s;
+  $trans: visibility 1s, opacity 1s;
   @include transition($trans);
 }
 

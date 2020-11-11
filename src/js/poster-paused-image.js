@@ -13,7 +13,7 @@ import * as browser from './utils/browser.js';
  *
  * @extends ClickableComponent
  */
-class PosterImage extends ClickableComponent {
+class PosterPausedImage extends ClickableComponent {
   /**
    * Create an instance of this class.
    *
@@ -27,31 +27,31 @@ class PosterImage extends ClickableComponent {
     super(player, options);
 
     this.update();
-    player.on('posterchange', Fn.bind(this, this.update));
+    player.on('posterpausedchange', Fn.bind(this, this.update));
   }
 
   /**
-   * Clean up and dispose of the `PosterImage`.
+   * Clean up and dispose of the `PosterPausedImage`.
    */
   dispose() {
-    this.player().off('posterchange', this.update);
+    this.player().off('posterpausedchange', this.update);
     super.dispose();
   }
 
   /**
-   * Create the `PosterImage`s DOM element.
+   * Create the `PosterPausedImage`s DOM element.
    *
    * @return {Element}
    *         The element that gets created.
    */
   createEl() {
-    const el = Dom.createEl('div', { className: 'vjs-poster', tabIndex: -1 }, {}, this.getPicture());
+    const el = Dom.createEl('div', { className: 'vjs-poster-paused', tabIndex: -1 }, {}, this.getPicture());
 
     return el;
   }
 
   getPicture() {
-    const poster = this.player().poster();
+    const poster = this.player().posterPause();
     let picture = null;
 
     if (typeof poster === 'object') {
@@ -100,7 +100,7 @@ class PosterImage extends ClickableComponent {
 
       medias.push(Dom.createEl(
         'img',
-        { className: 'vjs-poster-img', tabIndex: -1 },
+        { className: 'vjs-poster-paused-img', tabIndex: -1 },
         {
           src:
               'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2O4e/fufwAIyQOXgDhBOwAAAABJRU5ErkJggg=='
@@ -114,15 +114,15 @@ class PosterImage extends ClickableComponent {
   }
 
   /**
-   * An {@link EventTarget~EventListener} for {@link Player#posterchange} events.
+   * An {@link EventTarget~EventListener} for {@link Player#posterpausedchange} events.
    *
-   * @listens Player#posterchange
+   * @listens Player#posterpausedchange
    *
    * @param {EventTarget~Event} [event]
-   *        The `Player#posterchange` event that triggered this function.
+   *        The `Player#posterpausedchange` event that triggered this function.
    */
   update(event) {
-    const url = this.player().poster();
+    const url = this.player().posterPause();
 
     if (typeof url === 'string') {
       this.setSrc(url);
@@ -140,10 +140,10 @@ class PosterImage extends ClickableComponent {
   }
 
   /**
-   * Set the source of the `PosterImage` depending on the display method.
+   * Set the source of the `PosterPausedImage` depending on the display method.
    *
    * @param {string} url
-   *        The URL to the source for the `PosterImage`.
+   *        The URL to the source for the `PosterPausedImage`.
    */
   setSrc(url) {
     let backgroundImage = '';
@@ -158,10 +158,10 @@ class PosterImage extends ClickableComponent {
   }
 
   /**
-   * Set the source of the `PosterImage` depending on the display method.
+   * Set the source of the `PosterPausedImage` depending on the display method.
    *
    * @param {Object} urls
-   *        The URL to the source for the `PosterImage`.
+   *        The URL to the source for the `PosterPausedImage`.
    */
   setSrcFromObject() {
     this.el_.innerHTML = '';
@@ -169,7 +169,7 @@ class PosterImage extends ClickableComponent {
   }
 
   /**
-   * An {@link EventTarget~EventListener} for clicks on the `PosterImage`. See
+   * An {@link EventTarget~EventListener} for clicks on the `PosterPausedImage`. See
    * {@link ClickableComponent#handleClick} for instances where this will be triggered.
    *
    * @listens tap
@@ -206,5 +206,5 @@ class PosterImage extends ClickableComponent {
   }
 }
 
-Component.registerComponent('PosterImage', PosterImage);
-export default PosterImage;
+Component.registerComponent('PosterPausedImage', PosterPausedImage);
+export default PosterPausedImage;

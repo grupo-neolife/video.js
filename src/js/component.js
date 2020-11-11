@@ -10,7 +10,7 @@ import * as Dom from './utils/dom.js';
 import DomData from './utils/dom-data';
 import * as Fn from './utils/fn.js';
 import * as Guid from './utils/guid.js';
-import {toTitleCase, toLowerCase} from './utils/string-cases.js';
+import { toTitleCase, toLowerCase } from './utils/string-cases.js';
 import mergeOptions from './utils/merge-options.js';
 import computedStyle from './utils/computed-style';
 import Map from './utils/map.js';
@@ -25,7 +25,6 @@ import Set from './utils/set.js';
  * Components can also use methods from {@link EventTarget}
  */
 class Component {
-
   /**
    * A callback that is called when a component is ready. Does not have any
    * paramters and any callback value will be ignored.
@@ -52,7 +51,6 @@ class Component {
    *        Function that gets called when the `Component` is ready.
    */
   constructor(player, options, ready) {
-
     // The component might be the player itself and we can't pass `this` to super
     if (!player && this.play) {
       this.player_ = player = this; // eslint-disable-line
@@ -77,7 +75,7 @@ class Component {
     // If there was no ID from the options, generate one
     if (!this.id_) {
       // Don't require the player ID function in the case of mock players
-      const id = player && player.id && player.id() || 'no_player';
+      const id = (player && player.id && player.id()) || 'no_player';
 
       this.id_ = `${id}_component_${Guid.newGUID()}`;
     }
@@ -94,7 +92,7 @@ class Component {
     // if evented is anything except false, we want to mixin in evented
     if (options.evented !== false) {
       // Make this an evented object and use `el_`, if available, as its event bus
-      evented(this, {eventBusKey: this.el_ ? 'el_' : null});
+      evented(this, { eventBusKey: this.el_ ? 'el_' : null });
     }
     stateful(this, this.constructor.defaultState);
 
@@ -128,7 +126,6 @@ class Component {
    * @fires Component#dispose
    */
   dispose() {
-
     // Bail out if the component has already been disposed.
     if (this.isDisposed_) {
       return;
@@ -144,7 +141,7 @@ class Component {
      *           set to false so that the dispose event does not
      *           bubble up
      */
-    this.trigger({type: 'dispose', bubbles: false});
+    this.trigger({ type: 'dispose', bubbles: false });
 
     this.isDisposed_ = true;
 
@@ -470,7 +467,7 @@ class Component {
 
       component = new ComponentClass(this.player_ || this, options);
 
-    // child is a component instance
+      // child is a component instance
     } else {
       component = child;
     }
@@ -619,17 +616,16 @@ class Component {
       }
 
       workingChildren
-      // children that are in this.options_ but also in workingChildren  would
-      // give us extra children we do not want. So, we want to filter them out.
-        .concat(Object.keys(this.options_)
-          .filter(function(child) {
-            return !workingChildren.some(function(wchild) {
-              if (typeof wchild === 'string') {
-                return child === wchild;
-              }
-              return child === wchild.name;
-            });
-          }))
+        // children that are in this.options_ but also in workingChildren  would
+        // give us extra children we do not want. So, we want to filter them out.
+        .concat(Object.keys(this.options_).filter(function(child) {
+          return !workingChildren.some(function(wchild) {
+            if (typeof wchild === 'string') {
+              return child === wchild;
+            }
+            return child === wchild.name;
+          });
+        }))
         .map((child) => {
           let name;
           let opts;
@@ -642,14 +638,13 @@ class Component {
             opts = child;
           }
 
-          return {name, opts};
+          return { name, opts };
         })
         .filter((child) => {
-        // we have to make sure that child.name isn't in the techOrder since
-        // techs are registerd as Components but can't aren't compatible
-        // See https://github.com/videojs/video.js/issues/2772
-          const c = Component.getComponent(child.opts.componentClass ||
-                                       toTitleCase(child.name));
+          // we have to make sure that child.name isn't in the techOrder since
+          // techs are registerd as Components but can't aren't compatible
+          // See https://github.com/videojs/video.js/issues/2772
+          const c = Component.getComponent(child.opts.componentClass || toTitleCase(child.name));
 
           return c && !Tech.isTech(c);
         })
@@ -1147,7 +1142,6 @@ class Component {
    */
   handleKeyDown(event) {
     if (this.player_) {
-
       // We only stop propagation here because we want unhandled events to fall
       // back to the browser.
       event.stopPropagation();
@@ -1578,7 +1572,6 @@ class Component {
     }
 
     return id;
-
   }
 
   /**
@@ -1642,8 +1635,8 @@ class Component {
 
     // We need to make sure this check is only done if Tech has been registered.
     const isTech = Tech && Tech.isTech(ComponentToRegister);
-    const isComp = Component === ComponentToRegister ||
-      Component.prototype.isPrototypeOf(ComponentToRegister.prototype);
+    const isComp =
+      Component === ComponentToRegister || Component.prototype.isPrototypeOf(ComponentToRegister.prototype);
 
     if (isTech || !isComp) {
       let reason;
@@ -1673,9 +1666,7 @@ class Component {
       // in Players.players. So, we must loop through and verify that the value
       // for each item is not null. This allows registration of the Player component
       // after all players have been disposed or before any were created.
-      if (players &&
-          playerNames.length > 0 &&
-          playerNames.map((pname) => players[pname]).every(Boolean)) {
+      if (players && playerNames.length > 0 && playerNames.map((pname) => players[pname]).every(Boolean)) {
         throw new Error('Can not register Player component after player has been created.');
       }
     }
@@ -1717,8 +1708,8 @@ class Component {
  * @private
  * @type {Boolean}
  */
-Component.prototype.supportsRaf_ = typeof window.requestAnimationFrame === 'function' &&
-  typeof window.cancelAnimationFrame === 'function';
+Component.prototype.supportsRaf_ =
+  typeof window.requestAnimationFrame === 'function' && typeof window.cancelAnimationFrame === 'function';
 
 Component.registerComponent('Component', Component);
 

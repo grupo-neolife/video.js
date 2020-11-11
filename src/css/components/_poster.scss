@@ -1,5 +1,7 @@
-.vjs-poster {
-  display: inline-block;
+.vjs-poster,
+.vjs-poster-finished,
+.vjs-poster-paused {
+  display: none;
   vertical-align: middle;
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -16,17 +18,55 @@
   height: 100%;
 }
 
+.vjs-poster {
+  display: inline-block;
+}
+
 // Hide the poster after the video has started playing
-.vjs-has-started .vjs-poster {
+.vjs-has-started .vjs-poster,
+.vjs-has-started .vjs-poster-finished,
+.vjs-has-started .vjs-poster-paused {
   display: none;
 }
 
 // Don't hide the poster if we're playing audio
-.vjs-audio.vjs-has-started .vjs-poster {
+.vjs-audio.vjs-has-started .vjs-poster,
+.vjs-audio.vjs-has-started .vjs-poster-finished,
+.vjs-audio.vjs-has-started .vjs-poster-paused {
   display: block;
 }
 
 // Hide the poster when native controls are used otherwise it covers them
-.vjs-using-native-controls .vjs-poster {
+.vjs-using-native-controls .vjs-poster,
+.vjs-using-native-controls .vjs-poster-finished,
+.vjs-using-native-controls .vjs-poster-paused {
   display: none;
+}
+
+.vjs-has-started.vjs-paused:not(.vjs-ended) .vjs-poster-paused {
+  display: block;
+}
+
+.vjs-paused .vjs-poster-finished ~ .vjs-control-bar,
+.vjs-paused .vjs-poster-paused ~ .vjs-control-bar {
+  display: none;
+}
+
+.vjs-ended .vjs-poster-finished {
+  display: block;
+  pointer-events: none;
+}
+
+.vjs-poster-picture {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.vjs-poster-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
 }
