@@ -58,7 +58,7 @@ import './live-tracker.js';
 import './tech/html5.js';
 
 // Import Plugins
-import './hotkeys.js';
+// import './hotkeys.js';
 
 // The following tech events are simply re-triggered
 // on the player when they happen
