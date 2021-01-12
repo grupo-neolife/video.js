@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+. .env
+
+npm pack
+name=`ls neolife-videojs-*.tgz`
+
+curl -F package=@${name} https://${FURY_PUSH_TOKEN}@push.fury.io/neolife/ -v
+
+rm -f $name

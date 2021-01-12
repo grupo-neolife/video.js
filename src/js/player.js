@@ -57,6 +57,9 @@ import './live-tracker.js';
 // Import Html5 tech, at least for disposing the original video tag.
 import './tech/html5.js';
 
+// Import Plugins
+import './hotkeys.js';
+
 // The following tech events are simply re-triggered
 // on the player when they happen
 const TECH_EVENTS_RETRIGGER = [

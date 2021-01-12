@@ -100,7 +100,7 @@ class PosterPausedImage extends ClickableComponent {
 
       medias.push(Dom.createEl(
         'img',
-        { className: 'vjs-poster-paused-img', tabIndex: -1 },
+        { className: 'vjs-poster-img', tabIndex: -1 },
         {
           src:
               'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2O4e/fufwAIyQOXgDhBOwAAAABJRU5ErkJggg=='
