@@ -54,6 +54,8 @@ class Html5 extends Tech {
       this.setupSourcesetHandling_();
     }
 
+    this.isScrubbing_ = false;
+
     if (this.el_.hasChildNodes()) {
 
       const nodes = this.el_.childNodes;
@@ -535,6 +537,17 @@ class Html5 extends Tech {
    */
   setScrubbing(isScrubbing) {
     this.isScrubbing_ = isScrubbing;
+  }
+
+  /**
+   * Get whether we are scrubbing or not.
+   *
+   * @return {boolean} isScrubbing
+   *                  - true for we are currently scrubbing
+   *                  - false for we are no longer scrubbing
+   */
+  scrubbing() {
+    return this.isScrubbing_;
   }
 
   /**
@@ -1475,7 +1488,7 @@ Html5.resetMediaElement = function(el) {
 
   /**
    * Set the value of `defaultMuted` on the media element. `defaultMuted` indicates that the current
-   * audio level should be silent, but will only effect the muted level on intial playback..
+   * audio level should be silent, but will only effect the muted level on initial playback..
    *
    * @method Html5.prototype.setDefaultMuted
    * @param {boolean} defaultMuted

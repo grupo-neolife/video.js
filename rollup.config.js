@@ -11,6 +11,7 @@ import _ from 'lodash';
 import pkg from './package.json';
 import multiEntry from 'rollup-plugin-multi-entry';
 import stub from 'rollup-plugin-stub';
+import isCI from 'is-ci';
 
 const compiledLicense = _.template(fs.readFileSync('./build/license-header.txt', 'utf8'));
 const bannerData = _.pick(pkg, ['version', 'copyright']);
@@ -57,7 +58,7 @@ const primedBabel = babel({
 });
 
 const progress = () => {
-  if (process.env.TRAVIS || process.env.NETLIFY) {
+  if (isCI) {
     return {};
   }
 
@@ -93,8 +94,7 @@ const moduleExternals = [
   '@babel/runtime'
 ];
 const externals = {
-  browser: Object.keys(globals.browser).concat([
-  ]),
+  browser: [],
   module(id) {
     const result = moduleExternals.some((ext) => id.indexOf(ext) !== -1);
 
@@ -122,6 +122,30 @@ export default cliargs => [
       }),
       primedResolve,
       json(),
+      primedCjs,
+      primedBabel,
+      cliargs.progress !== false ? progress() : {}
+    ],
+    onwarn,
+    watch
+  },
+  {
+    input: 'test/unit/**/*.test.js',
+    output: {
+      format: 'iife',
+      name: 'videojsTests',
+      file: 'test/dist/bundle.js',
+      globals: globals.test
+    },
+    external: externals.test,
+    plugins: [
+      multiEntry({exports: false}),
+      alias({
+        'video.js': path.resolve(__dirname, './src/js/video.js')
+      }),
+      primedResolve,
+      json(),
+      stub(),
       primedCjs,
       primedBabel,
       cliargs.progress !== false ? progress() : {}
@@ -250,30 +274,5 @@ export default cliargs => [
     ],
     onwarn,
     watch
-  },
-  {
-    input: 'test/unit/**/*.test.js',
-    output: {
-      format: 'iife',
-      name: 'videojsTests',
-      file: 'test/dist/bundle.js',
-      globals: globals.test
-    },
-    external: externals.test,
-    plugins: [
-      multiEntry({exports: false}),
-      alias({
-        'video.js': path.resolve(__dirname, './src/js/video.js')
-      }),
-      primedResolve,
-      json(),
-      stub(),
-      primedCjs,
-      primedBabel,
-      cliargs.progress !== false ? progress() : {}
-    ],
-    onwarn,
-    watch
   }
-
 ];

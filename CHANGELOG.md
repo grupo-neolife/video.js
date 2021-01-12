@@ -1,3 +1,104 @@
+<a name="7.11.1"></a>
+## [7.11.1](https://github.com/videojs/video.js/compare/v7.11.0...v7.11.1) (2020-12-22)
+
+### Features
+
+* **lang:** add Slovene language translation ([#6959](https://github.com/videojs/video.js/issues/6959)) ([8476abd](https://github.com/videojs/video.js/commit/8476abd))
+
+### Bug Fixes
+
+* **MapSham:** fix set method to use map property ([#7000](https://github.com/videojs/video.js/issues/7000)) ([a35a121](https://github.com/videojs/video.js/commit/a35a121))
+* **package:** update to [@videojs](https://github.com/videojs)/http-streaming[@2](https://github.com/2).4.1 ([#7010](https://github.com/videojs/video.js/issues/7010)) ([ead775b](https://github.com/videojs/video.js/commit/ead775b))
+* clear readyQueue with dispose ([#6967](https://github.com/videojs/video.js/issues/6967)) ([11d37e2](https://github.com/videojs/video.js/commit/11d37e2))
+* **package:** update to [@videojs](https://github.com/videojs)/http-streaming[@2](https://github.com/2).4.0 ([#6986](https://github.com/videojs/video.js/issues/6986)) ([0631f03](https://github.com/videojs/video.js/commit/0631f03))
+* **time-display:** add a null check for text node ([#6977](https://github.com/videojs/video.js/issues/6977)) ([3e30f83](https://github.com/videojs/video.js/commit/3e30f83)), closes [#6699](https://github.com/videojs/video.js/issues/6699) [#6700](https://github.com/videojs/video.js/issues/6700)
+* play progress time tooltip from jittering during live ([#6968](https://github.com/videojs/video.js/issues/6968)) ([799616d](https://github.com/videojs/video.js/commit/799616d))
+* **rollup:** browser globals shouldn't be external ([#6954](https://github.com/videojs/video.js/issues/6954)) ([63752f3](https://github.com/videojs/video.js/commit/63752f3)), closes [#6443](https://github.com/videojs/video.js/issues/6443) [#6272](https://github.com/videojs/video.js/issues/6272) [#6212](https://github.com/videojs/video.js/issues/6212) [#5680](https://github.com/videojs/video.js/issues/5680)
+
+### Chores
+
+* move unit test build right below main for faster watch ([#6953](https://github.com/videojs/video.js/issues/6953)) ([5a13e90](https://github.com/videojs/video.js/commit/5a13e90))
+
+### Documentation
+
+* Remove Flash ([#6994](https://github.com/videojs/video.js/issues/6994)) ([503141c](https://github.com/videojs/video.js/commit/503141c))
+
+<a name="7.11.0"></a>
+# [7.11.0](https://github.com/videojs/video.js/compare/v7.10.2...v7.11.0) (2020-11-16)
+
+### Features
+
+* **lang:** add thai language translations ([#6945](https://github.com/videojs/video.js/issues/6945)) ([464b971](https://github.com/videojs/video.js/commit/464b971))
+* **tech:** add a scrubbing getter. ([#6920](https://github.com/videojs/video.js/issues/6920)) ([a803484](https://github.com/videojs/video.js/commit/a803484))
+* **track:** make label property mutable and fire a labelchange event when the label is changed ([#6928](https://github.com/videojs/video.js/issues/6928)) ([ee0637c](https://github.com/videojs/video.js/commit/ee0637c))
+* trigger languagechange event on a language change ([#6891](https://github.com/videojs/video.js/issues/6891)) ([a0d09c1](https://github.com/videojs/video.js/commit/a0d09c1))
+
+### Bug Fixes
+
+* cast TOUCH_ENABLED to boolean ([#6943](https://github.com/videojs/video.js/issues/6943)) ([dcce0e9](https://github.com/videojs/video.js/commit/dcce0e9))
+* **css:** set seek to live button's align-items prop to center ([#6942](https://github.com/videojs/video.js/issues/6942)) ([3901ab0](https://github.com/videojs/video.js/commit/3901ab0))
+* always set tabIndex to restore keydown a11y ([#6871](https://github.com/videojs/video.js/issues/6871)) ([0140b28](https://github.com/videojs/video.js/commit/0140b28)), closes [#6145](https://github.com/videojs/video.js/issues/6145) [#6870](https://github.com/videojs/video.js/issues/6870)
+* **menu:** focus correct MenuItem on keyboard open ([#6914](https://github.com/videojs/video.js/issues/6914)) ([694fe0f](https://github.com/videojs/video.js/commit/694fe0f)), closes [#6912](https://github.com/videojs/video.js/issues/6912)
+* **package:** update to [@videojs](https://github.com/videojs)/http-streaming[@2](https://github.com/2).3.0 ([#6941](https://github.com/videojs/video.js/issues/6941)) ([f74e45b](https://github.com/videojs/video.js/commit/f74e45b))
+
+### Chores
+
+* **sandbox:** switch all urls to https ([#6946](https://github.com/videojs/video.js/issues/6946)) ([ca2d78f](https://github.com/videojs/video.js/commit/ca2d78f))
+* setup Github CI ([#6940](https://github.com/videojs/video.js/issues/6940)) ([6a28562](https://github.com/videojs/video.js/commit/6a28562))
+
+### Documentation
+
+* change blog links to most recent blog version, fix typo ([#6904](https://github.com/videojs/video.js/issues/6904)) ([8617530](https://github.com/videojs/video.js/commit/8617530))
+
+<a name="7.10.2"></a>
+## [7.10.2](https://github.com/videojs/video.js/compare/v7.10.1...v7.10.2) (2020-11-04)
+
+### Bug Fixes
+
+* **package:** update to VHS 2.2.4 ([#6925](https://github.com/videojs/video.js/issues/6925)) ([9d9bbfe](https://github.com/videojs/video.js/commit/9d9bbfe)), closes [#6909](https://github.com/videojs/video.js/issues/6909)
+
+<a name="7.10.1"></a>
+## [7.10.1](https://github.com/videojs/video.js/compare/v7.10.0...v7.10.1) (2020-10-15)
+
+<a name="7.10.0"></a>
+# [7.10.0](https://github.com/videojs/video.js/compare/v7.9.7...v7.10.0) (2020-10-14)
+
+### Features
+
+* update to [@videojs](https://github.com/videojs)/http-streaming[@2](https://github.com/2).2.3 ([#6867](https://github.com/videojs/video.js/issues/6867)) ([4a6a46a](https://github.com/videojs/video.js/commit/4a6a46a))
+
+<a name="7.9.7"></a>
+## [7.9.7](https://github.com/videojs/video.js/compare/v7.9.6...v7.9.7) (2020-10-06)
+
+### Bug Fixes
+
+* **text-track:** don't overlap captions when font-size changes ([#6874](https://github.com/videojs/video.js/issues/6874)) ([affc061](https://github.com/videojs/video.js/commit/affc061)), closes [/github.com/videojs/video.js/commit/4e5c28cc561487ff29394d19dce3a420675e4f9d#diff-8169d53aa7eee6cab5f85b6641ef3117R176](https://github.com//github.com/videojs/video.js/commit/4e5c28cc561487ff29394d19dce3a420675e4f9d/issues/diff-8169d53aa7eee6cab5f85b6641ef3117R176)
+
+<a name="7.9.6"></a>
+## [7.9.6](https://github.com/videojs/video.js/compare/v7.9.5...v7.9.6) (2020-10-01)
+
+### Bug Fixes
+
+* **dom:** vertical getPointerPosition value ([#6864](https://github.com/videojs/video.js/issues/6864)) ([1963086](https://github.com/videojs/video.js/commit/1963086)), closes [#5773](https://github.com/videojs/video.js/issues/5773) [#6863](https://github.com/videojs/video.js/issues/6863)
+
+### Documentation
+
+* Fix simple typo, intial -> initial ([#6851](https://github.com/videojs/video.js/issues/6851)) ([f22ead1](https://github.com/videojs/video.js/commit/f22ead1))
+
+<a name="7.9.5"></a>
+## [7.9.5](https://github.com/videojs/video.js/compare/v7.9.4...v7.9.5) (2020-09-10)
+
+<a name="7.9.4"></a>
+## [7.9.4](https://github.com/videojs/video.js/compare/v7.9.3...v7.9.4) (2020-09-10)
+
+### Bug Fixes
+
+* Better mouse position handling ([#5773](https://github.com/videojs/video.js/issues/5773)) ([c4c8fc1](https://github.com/videojs/video.js/commit/c4c8fc1)), closes [#6726](https://github.com/videojs/video.js/issues/6726) [#1102](https://github.com/videojs/video.js/issues/1102)
+
+### Chores
+
+* **package:** Update [@videojs](https://github.com/videojs)/http-streaming to 1.13.4 ([#6839](https://github.com/videojs/video.js/issues/6839)) ([7192be6](https://github.com/videojs/video.js/commit/7192be6)), closes [#6812](https://github.com/videojs/video.js/issues/6812)
+
 <a name="7.9.3"></a>
 ## [7.9.3](https://github.com/videojs/video.js/compare/v7.9.2...v7.9.3) (2020-08-17)
 
