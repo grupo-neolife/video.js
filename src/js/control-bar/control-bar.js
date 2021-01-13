@@ -6,23 +6,25 @@ import document from 'global/document';
 
 // Required children
 import './play-toggle.js';
-import './time-controls/current-time-display.js';
-import './time-controls/duration-display.js';
-import './time-controls/time-divider.js';
-import './time-controls/remaining-time-display.js';
-import './live-display.js';
-import './seek-to-live.js';
-import './progress-control/progress-control.js';
-import './picture-in-picture-toggle.js';
+// import './time-controls/current-time-display.js';
+// import './time-controls/duration-display.js';
+// import './time-controls/time-divider.js';
+// import './time-controls/remaining-time-display.js';
+// import './live-display.js';
+// import './seek-to-live.js';
+// import './progress-control/progress-control.js';
+// import './picture-in-picture-toggle.js';
+import './rewind-button.js';
+import './forward-button.js';
 import './fullscreen-toggle.js';
 import './volume-panel.js';
-import './text-track-controls/chapters-button.js';
-import './text-track-controls/descriptions-button.js';
-import './text-track-controls/subtitles-button.js';
-import './text-track-controls/captions-button.js';
-import './text-track-controls/subs-caps-button.js';
-import './audio-track-controls/audio-track-button.js';
-import './playback-rate-menu/playback-rate-menu-button.js';
+// import './text-track-controls/chapters-button.js';
+// import './text-track-controls/descriptions-button.js';
+// import './text-track-controls/subtitles-button.js';
+// import './text-track-controls/captions-button.js';
+// import './text-track-controls/subs-caps-button.js';
+// import './audio-track-controls/audio-track-button.js';
+// import './playback-rate-menu/playback-rate-menu-button.js';
 import './spacer-controls/custom-control-spacer.js';
 
 /**
@@ -31,7 +33,6 @@ import './spacer-controls/custom-control-spacer.js';
  * @extends Component
  */
 class ControlBar extends Component {
-
   /**
    * Create the `Component`'s DOM element
    *
@@ -56,19 +57,21 @@ ControlBar.prototype.options_ = {
   children: [
     'playToggle',
     'volumePanel',
-    'currentTimeDisplay',
-    'timeDivider',
-    'durationDisplay',
-    'progressControl',
-    'liveDisplay',
-    'seekToLive',
-    'remainingTimeDisplay',
+    'rewind',
+    'forward',
+    // 'currentTimeDisplay',
+    // 'timeDivider',
+    // 'durationDisplay',
+    // 'progressControl',
+    // 'liveDisplay',
+    // 'seekToLive',
+    // 'remainingTimeDisplay',
     'customControlSpacer',
-    'playbackRateMenuButton',
-    'chaptersButton',
-    'descriptionsButton',
-    'subsCapsButton',
-    'audioTrackButton',
+    // 'playbackRateMenuButton',
+    // 'chaptersButton',
+    // 'descriptionsButton',
+    // 'subsCapsButton',
+    // 'audioTrackButton',
     'fullscreenToggle'
   ]
 };

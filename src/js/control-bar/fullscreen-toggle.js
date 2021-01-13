@@ -70,9 +70,9 @@ class FullscreenToggle extends Button {
    */
   handleClick(event) {
     if (!this.player_.isFullscreen()) {
-      this.player_.requestFullscreen();
+      this.player_.enterFullWindow();
     } else {
-      this.player_.exitFullscreen();
+      this.player_.exitFullWindow();
     }
   }
 

@@ -26,7 +26,7 @@ import safeParseTuple from 'safe-json-parse/tuple';
 import { assign } from './utils/obj';
 import mergeOptions from './utils/merge-options.js';
 import { silencePromise, isPromise } from './utils/promise';
-import textTrackConverter from './tracks/text-track-list-converter.js';
+// import textTrackConverter from './tracks/text-track-list-converter.js';
 import ModalDialog from './modal-dialog';
 import Tech from './tech/tech.js';
 import * as middleware from './tech/middleware.js';
@@ -44,13 +44,14 @@ import './tech/loader.js';
 import './poster-image.js';
 import './poster-finished-image.js';
 import './poster-paused-image.js';
-import './tracks/text-track-display.js';
+import './rewind-forward-display.js';
+// import './tracks/text-track-display.js';
 import './loading-spinner.js';
 import './big-play-button.js';
 import './close-button.js';
 import './control-bar/control-bar.js';
 import './error-display.js';
-import './tracks/text-track-settings.js';
+// import './tracks/text-track-settings.js';
 import './resize-manager.js';
 import './live-tracker.js';
 
@@ -1141,6 +1142,7 @@ class Player extends Component {
       'poster': this.poster(),
       'posterFinish': this.posterFinish(),
       'posterPause': this.posterPause(),
+      // 'rewindForward': this.rewindForward(),
       'language': this.language(),
       'playerElIngest': this.playerElIngest_ || false,
       'vtt.js': this.options_['vtt.js'],
@@ -1179,7 +1181,7 @@ class Player extends Component {
     // player.triggerReady is always async, so don't need this to be async
     this.tech_.ready(Fn.bind(this, this.handleTechReady_), true);
 
-    textTrackConverter.jsonToTextTracks(this.textTracksJson_ || [], this.tech_);
+    // textTrackConverter.jsonToTextTracks(this.textTracksJson_ || [], this.tech_);
 
     // Listen to all HTML5-defined events and trigger them on the player
     TECH_EVENTS_RETRIGGER.forEach((event) => {
@@ -1204,6 +1206,8 @@ class Player extends Component {
     this.on(this.tech_, 'waiting', this.handleTechWaiting_);
     this.on(this.tech_, 'ended', this.handleTechEnded_);
     this.on(this.tech_, 'seeking', this.handleTechSeeking_);
+    this.on(this.tech_, 'rewind', this.handleTechRewind_);
+    this.on(this.tech_, 'forward', this.handleTechForward_);
     this.on(this.tech_, 'play', this.handleTechPlay_);
     this.on(this.tech_, 'firstplay', this.handleTechFirstPlay_);
     this.on(this.tech_, 'pause', this.handleTechPause_);
@@ -1249,7 +1253,7 @@ class Player extends Component {
 
       this[props.privateName] = this[props.getterName]();
     });
-    this.textTracksJson_ = textTrackConverter.textTracksToJson(this.tech_);
+    // this.textTracksJson_ = textTrackConverter.textTracksToJson(this.tech_);
 
     this.isReady_ = false;
 
@@ -1803,6 +1807,40 @@ class Player extends Component {
      * @type {EventTarget~Event}
      */
     this.trigger('seeking');
+  }
+
+  /**
+   * Retrigger the `rewind` event that was triggered by the {@link Tech}.
+   *
+   * @fires Player#rewind
+   * @listens Tech#rewind
+   * @private
+   */
+  handleTechRewind_() {
+    /**
+     * Fired whenever the player is jumping to a new time
+     *
+     * @event Player#rewind
+     * @type {EventTarget~Event}
+     */
+    this.trigger('rewind');
+  }
+
+  /**
+   * Retrigger the `forward` event that was triggered by the {@link Tech}.
+   *
+   * @fires Player#forward
+   * @listens Tech#forward
+   * @private
+   */
+  handleTechForward_() {
+    /**
+     * Fired whenever the player is jumping to a new time
+     *
+     * @event Player#forward
+     * @type {EventTarget~Event}
+     */
+    this.trigger('forward');
   }
 
   /**
@@ -3157,6 +3195,9 @@ class Player extends Component {
     const {
       fullscreenKey = (keydownEvent) => keycode.isEventKey(keydownEvent, 'f'),
       muteKey = (keydownEvent) => keycode.isEventKey(keydownEvent, 'm'),
+      // TODO: create event to seek from arrow keys
+      // muteKey = (keydownEvent) => keycode.isEventKey(keydownEvent, 'm'),
+      // muteKey = (keydownEvent) => keycode.isEventKey(keydownEvent, 'm'),
       playPauseKey = (keydownEvent) =>
         keycode.isEventKey(keydownEvent, 'k') || keycode.isEventKey(keydownEvent, 'Space')
     } = hotkeys;
@@ -4994,15 +5035,16 @@ Player.prototype.options_ = {
   children: [
     'mediaLoader',
     'posterImage',
-    'PosterFinishedImage',
-    'PosterPausedImage',
-    'textTrackDisplay',
+    'posterFinishedImage',
+    'posterPausedImage',
+    'rewindForward',
+    // 'textTrackDisplay',
     'loadingSpinner',
     'bigPlayButton',
     'liveTracker',
     'controlBar',
     'errorDisplay',
-    'textTrackSettings',
+    // 'textTrackSettings',
     'resizeManager'
   ],
 

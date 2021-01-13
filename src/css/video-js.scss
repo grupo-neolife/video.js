@@ -24,23 +24,24 @@
 @import "components/volume";
 
 @import "components/poster";
-@import "components/live";
-@import "components/time";
+// @import "components/live";
+// @import "components/time";
 @import "components/play-pause";
-@import "components/text-track";
-@import "components/picture-in-picture";
+// @import "components/text-track";
+// @import "components/picture-in-picture";
+@import "components/time-control";
 @import "components/fullscreen";
-@import "components/playback-rate";
+// @import "components/playback-rate";
 @import "components/error";
 @import "components/loading";
-@import "components/captions";
-@import "components/chapters";
-@import "components/descriptions";
-@import "components/subtitles";
-@import "components/subs-caps";
-@import "components/audio";
+// @import "components/captions";
+// @import "components/chapters";
+// @import "components/descriptions";
+// @import "components/subtitles";
+// @import "components/subs-caps";
+// @import "components/audio";
 @import "components/adaptive";
-@import "components/captions-settings";
+// @import "components/captions-settings";
 
 @import "print";
 
@@ -57,11 +58,11 @@
 // The rule is needed for :focus-visible polyfill
 .js-focus-visible .video-js *:focus:not(.focus-visible) {
   outline: none;
-  background: none;
+  // background: none;
 }
 
 .video-js *:focus:not(:focus-visible),
 .video-js .vjs-menu *:focus:not(:focus-visible) {
   outline: none;
-  background: none;
+  // background: none;
 }

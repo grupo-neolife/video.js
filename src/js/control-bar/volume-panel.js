@@ -2,14 +2,14 @@
  * @file volume-control.js
  */
 import Component from '../component.js';
-import {isPlain} from '../utils/obj';
+// import {isPlain} from '../utils/obj';
 import * as Events from '../utils/events.js';
 import * as Fn from '../utils/fn.js';
 import keycode from 'keycode';
 import document from 'global/document';
 
 // Required children
-import './volume-control/volume-control.js';
+// import './volume-control/volume-control.js';
 import './mute-toggle.js';
 
 /**
@@ -38,25 +38,25 @@ class VolumePanel extends Component {
 
     // pass the inline option down to the VolumeControl as vertical if
     // the VolumeControl is on.
-    if (typeof options.volumeControl === 'undefined' || isPlain(options.volumeControl)) {
-      options.volumeControl = options.volumeControl || {};
-      options.volumeControl.vertical = !options.inline;
-    }
+    // if (typeof options.volumeControl === 'undefined' || isPlain(options.volumeControl)) {
+    //   options.volumeControl = options.volumeControl || {};
+    //   options.volumeControl.vertical = !options.inline;
+    // }
 
     super(player, options);
 
     this.on(player, ['loadstart'], this.volumePanelState_);
     this.on(this.muteToggle, 'keyup', this.handleKeyPress);
-    this.on(this.volumeControl, 'keyup', this.handleVolumeControlKeyUp);
-    this.on('keydown', this.handleKeyPress);
-    this.on('mouseover', this.handleMouseOver);
-    this.on('mouseout', this.handleMouseOut);
+    // this.on(this.volumeControl, 'keyup', this.handleVolumeControlKeyUp);
+    // this.on('keydown', this.handleKeyPress);
+    // this.on('mouseover', this.handleMouseOver);
+    // this.on('mouseout', this.handleMouseOut);
 
     // while the slider is active (the mouse has been pressed down and
     // is dragging) we do not want to hide the VolumeBar
-    this.on(this.volumeControl, ['slideractive'], this.sliderActive_);
+    // this.on(this.volumeControl, ['slideractive'], this.sliderActive_);
 
-    this.on(this.volumeControl, ['sliderinactive'], this.sliderInactive_);
+    // this.on(this.volumeControl, ['sliderinactive'], this.sliderInactive_);
   }
 
   /**
@@ -66,7 +66,7 @@ class VolumePanel extends Component {
    * @private
    */
   sliderActive_() {
-    this.addClass('vjs-slider-active');
+    // this.addClass('vjs-slider-active');
   }
 
   /**
@@ -76,7 +76,7 @@ class VolumePanel extends Component {
    * @private
    */
   sliderInactive_() {
-    this.removeClass('vjs-slider-active');
+    // this.removeClass('vjs-slider-active');
   }
 
   /**
@@ -89,15 +89,15 @@ class VolumePanel extends Component {
   volumePanelState_() {
     // hide volume panel if neither volume control or mute toggle
     // are displayed
-    if (this.volumeControl.hasClass('vjs-hidden') && this.muteToggle.hasClass('vjs-hidden')) {
-      this.addClass('vjs-hidden');
-    }
+    // if (this.volumeControl.hasClass('vjs-hidden') && this.muteToggle.hasClass('vjs-hidden')) {
+    //   this.addClass('vjs-hidden');
+    // }
 
     // if only mute toggle is visible we don't want
     // volume panel expanding when hovered or active
-    if (this.volumeControl.hasClass('vjs-hidden') && !this.muteToggle.hasClass('vjs-hidden')) {
-      this.addClass('vjs-mute-toggle-only');
-    }
+    // if (this.volumeControl.hasClass('vjs-hidden') && !this.muteToggle.hasClass('vjs-hidden')) {
+    //   this.addClass('vjs-mute-toggle-only');
+    // }
   }
 
   /**
@@ -152,7 +152,7 @@ class VolumePanel extends Component {
    * @listens mouseover
    */
   handleMouseOver(event) {
-    this.addClass('vjs-hover');
+    // this.addClass('vjs-hover');
     Events.on(document, 'keyup', Fn.bind(this, this.handleKeyPress));
   }
 
@@ -167,7 +167,7 @@ class VolumePanel extends Component {
    * @listens mouseout
    */
   handleMouseOut(event) {
-    this.removeClass('vjs-hover');
+    // this.removeClass('vjs-hover');
     Events.off(document, 'keyup', Fn.bind(this, this.handleKeyPress));
   }
 
@@ -195,8 +195,8 @@ class VolumePanel extends Component {
  */
 VolumePanel.prototype.options_ = {
   children: [
-    'muteToggle',
-    'volumeControl'
+    'muteToggle'
+    // 'volumeControl'
   ]
 };
 

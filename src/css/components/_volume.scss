@@ -40,32 +40,32 @@
   &:focus  .vjs-volume-control,
   & .vjs-volume-control:active,
   &.vjs-hover .vjs-mute-control  ~ .vjs-volume-control,
-  & .vjs-volume-control.vjs-slider-active {
-    &.vjs-volume-horizontal {
-      width: 5em;
-      height: 3em;
-      margin-right: 0;
-    }
-    visibility: visible;
-    opacity: 1;
-    position: relative;
+  // & .vjs-volume-control.vjs-slider-active {
+  //   &.vjs-volume-horizontal {
+  //     width: 5em;
+  //     height: 3em;
+  //     margin-right: 0;
+  //   }
+  //   visibility: visible;
+  //   opacity: 1;
+  //   position: relative;
 
-    &.vjs-volume-vertical {
-      left: -3.5em;
-      @include transition(left 0s);
-    }
-    $transition-property: visibility 0.1s, opacity 0.1s, height 0.1s, width 0.1s, left 0s, top 0s;
-    @include transition($transition-property);
-  }
+  //   &.vjs-volume-vertical {
+  //     left: -3.5em;
+  //     @include transition(left 0s);
+  //   }
+  //   $transition-property: visibility 0.1s, opacity 0.1s, height 0.1s, width 0.1s, left 0s, top 0s;
+  //   @include transition($transition-property);
+  // }
 
   &.vjs-volume-panel-horizontal {
     &.vjs-hover,
     &:active,
-    &.vjs-slider-active {
-      width: 10em;
+    // &.vjs-slider-active {
+    //   width: 10em;
 
-      @include transition(width 0.1s);
-    }
+    //   @include transition(width 0.1s);
+    // }
     &.vjs-mute-toggle-only {
       width: 4em;
     }
@@ -114,16 +114,16 @@
   margin: 1.35em 0.45em;
 }
 
-.vjs-volume-bar.vjs-slider-horizontal {
-  width: 5em;
-  height: 0.3em;
-}
+// .vjs-volume-bar.vjs-slider-horizontal {
+//   width: 5em;
+//   height: 0.3em;
+// }
 
-.vjs-volume-bar.vjs-slider-vertical {
-  width: 0.3em;
-  height: 5em;
-  margin: 1.35em auto;
-}
+// .vjs-volume-bar.vjs-slider-vertical {
+//   width: 0.3em;
+//   height: 5em;
+//   margin: 1.35em auto;
+// }
 
 .video-js .vjs-volume-level {
   position: absolute;
@@ -141,37 +141,37 @@
   }
 }
 
-.vjs-slider-vertical .vjs-volume-level {
-  width: 0.3em;
+// .vjs-slider-vertical .vjs-volume-level {
+//   width: 0.3em;
 
-  // Volume handle
-  &:before {
-    top: -0.5em;
-    left: -0.3em;
-  }
-}
-.vjs-slider-horizontal .vjs-volume-level {
-  height: 0.3em;
+//   // Volume handle
+//   &:before {
+//     top: -0.5em;
+//     left: -0.3em;
+//   }
+// }
+// .vjs-slider-horizontal .vjs-volume-level {
+//   height: 0.3em;
 
-  // Volume handle
-  &:before {
-    top: -0.3em;
-    right: -0.5em;
-  }
-}
+//   // Volume handle
+//   &:before {
+//     top: -0.3em;
+//     right: -0.5em;
+//   }
+// }
 
 .video-js .vjs-volume-panel.vjs-volume-panel-vertical {
   width: 4em;
 }
 
-// Assumes volume starts at 1.0.
-.vjs-volume-bar.vjs-slider-vertical .vjs-volume-level {
-  height: 100%;
-}
+// // Assumes volume starts at 1.0.
+// .vjs-volume-bar.vjs-slider-vertical .vjs-volume-level {
+//   height: 100%;
+// }
 
-.vjs-volume-bar.vjs-slider-horizontal .vjs-volume-level {
-  width: 100%;
-}
+// .vjs-volume-bar.vjs-slider-horizontal .vjs-volume-level {
+//   width: 100%;
+// }
 
 .video-js .vjs-volume-vertical {
   width: 3em;

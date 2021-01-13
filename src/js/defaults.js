@@ -1,5 +1,6 @@
 export default {
   controlBar: {
+    volumePanel: false,
     progressControl: {
       seekBar: {
         playProgressBar: {

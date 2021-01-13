@@ -154,6 +154,10 @@ class PosterPausedImage extends ClickableComponent {
       backgroundImage = `url("${url}")`;
     }
 
+    this.el_.style.backgroundRepeat = 'no-repeat';
+    this.el_.style.backgroundSize = 'contain';
+    this.el_.style.backgroundPosition = 'center center';
+    this.el_.style.backgroundColor = 'black';
     this.el_.style.backgroundImage = backgroundImage;
   }
 
