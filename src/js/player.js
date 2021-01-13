@@ -3007,7 +3007,9 @@ class Player extends Component {
    */
   fullWindowOnEscKey(event) {
     if (keycode.isEventKey(event, 'Esc')) {
-      if (this.isFullscreen() === true) {
+      if (this.isFullWindow) {
+        this.exitFullWindow();
+      } else if (this.isFullscreen() === true) {
         this.exitFullscreen();
       } else {
         this.exitFullWindow();

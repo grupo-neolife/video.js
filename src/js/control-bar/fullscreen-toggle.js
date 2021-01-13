@@ -50,7 +50,7 @@ class FullscreenToggle extends Button {
    * @listens Player#fullscreenchange
    */
   handleFullscreenChange(event) {
-    if (this.player_.isFullscreen()) {
+    if (this.player_.isFullWindow) {
       this.controlText('Non-Fullscreen');
     } else {
       this.controlText('Fullscreen');
@@ -69,7 +69,7 @@ class FullscreenToggle extends Button {
    * @listens click
    */
   handleClick(event) {
-    if (!this.player_.isFullscreen()) {
+    if (!this.player_.isFullWindow) {
       this.player_.enterFullWindow();
     } else {
       this.player_.exitFullWindow();
